@@ -13,10 +13,10 @@ public class DataBaseHandler  extends android.database.sqlite.SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "tournamentData";
+    private static final int DATABASE_VERSION = 1;
 
     // tournament table
     /*##############################################################*/
-    private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "tournament";
     private static final String tr_id = "tr_id";
     private static final String tr_name = "tr_name";
@@ -56,22 +56,22 @@ public class DataBaseHandler  extends android.database.sqlite.SQLiteOpenHelper {
 
         // Team query
         /*##############################################################*/
-        String query_team =
-                "CREATE TABLE " + TABLE_NAME_Team +
-                        " (" + tr_id + " INTEGER ," +
-                        team_id + " INTEGER ," +
-                        team_group + " TEXT ," +
-                        match_played + " INTEGER ," +
-                        wonT + " INTEGER ," +
-                        drawT + " INTEGER ," +
-                        lostT + " INTEGER , "+
-                        goal_for + " INTEGER ," +
-                        goal_against + " INTEGER ," +
-                        goal_diff + " INTEGER ,"+
-                        pointsT + " INTEGER ," +
-                        group_position + " INTEGER," +
-                        "PRIMARY KEY (" +team_id + "," + tr_id + ") , " +
-                        "FOREIGN KEY ( "+ tr_id + ") REFERENCES " + TABLE_NAME + " (" + tr_id +" ));";
+        String query_team = "CREATE TABLE " + TABLE_NAME_Team +
+                " (" + tr_id + " INTEGER ," +
+                team_id + " INTEGER ," +
+                team_group + " TEXT ," +
+                match_played + " INTEGER ," +
+                wonT + " INTEGER ," +
+                drawT + " INTEGER ," +
+                lostT + " INTEGER , "+
+                goal_for + " INTEGER ," +
+                goal_against + " INTEGER ," +
+                goal_diff + " INTEGER ,"+
+                pointsT + " INTEGER ," +
+                group_position + " INTEGER," +
+                "PRIMARY KEY (" +team_id + "," + tr_id + ") , " +
+                "FOREIGN KEY ( "+ tr_id + ") REFERENCES " + TABLE_NAME + " (" + tr_id +" ));";
+
         db.execSQL(query_team);
     }
 
@@ -97,7 +97,7 @@ public class DataBaseHandler  extends android.database.sqlite.SQLiteOpenHelper {
        }
     }
 
-    public void addTeam (int idOfTheTournament , int teamID , String teamGroup , int matchPlayed ,
+    public void add_team (int idOfTheTournament , int teamID , String teamGroup , int matchPlayed ,
                          int won , int draw , int lost ,int goalFor, int goalAgainst , int goalDiff , int points , int groupPosition){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

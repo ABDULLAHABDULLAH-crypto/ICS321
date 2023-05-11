@@ -16,16 +16,11 @@ public class AddTeamActivity extends AppCompatActivity {
      won ,  draw ,  lost , goalFor,  goalAgainst ,  goalDiff ,  points ,  groupPosition ;
     Button add;
 
-
-
-
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_team);
-
 
         idOfTheTournament = findViewById(R.id.editTextTournamentID);
         teamID = findViewById(R.id.editTextTeamID);
@@ -45,7 +40,7 @@ public class AddTeamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DataBaseHandler myDB = new DataBaseHandler(AddTeamActivity.this);
-                myDB.addTeam(
+                myDB.add_team(
                         Integer.parseInt(idOfTheTournament.getText().toString().trim()),
                         Integer.parseInt(teamID.getText().toString().trim()),
                         teamGroup.getText().toString().trim(),

@@ -15,13 +15,8 @@ import com.example.myapplication.User.UserActivity;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView ;
-    Button redCard;
-    Button highestP;
-
-    Button logIn;
-
-    RadioButton userRadioButton;
-    RadioButton adminRadioButton;
+    Button redCard ,highestP,logIn;
+    RadioButton userRadioButton,adminRadioButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
