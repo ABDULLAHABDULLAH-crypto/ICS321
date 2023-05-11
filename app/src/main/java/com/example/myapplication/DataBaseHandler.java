@@ -12,7 +12,7 @@ public class DataBaseHandler  extends android.database.sqlite.SQLiteOpenHelper {
     private Context context ;
 
 
-    private static final String DATABASE_NAME = "tournamentData";
+    private static final String DATABASE_NAME = "tournamentData.db";
     private static final int DATABASE_VERSION = 1;
 
     // tournament table
@@ -120,8 +120,6 @@ public class DataBaseHandler  extends android.database.sqlite.SQLiteOpenHelper {
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
 }
