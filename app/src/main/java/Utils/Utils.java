@@ -80,6 +80,59 @@ public class Utils {
 
 //  penalty_shootout Table
 
+    public static String penalty_shootout_Table="penalty_shootout";
+    public static String kick_id = "kick_id";
+    public static String match_no_penalty_shootout="match_no";
+    public static  String player_id_penalty_shootout = "player_id";
+    public static String team_id_penalty_shootout="team_id";
+    public static  String score_goal = "score_goal";
+    public static  String kick_no = "kick_no";
+
+// player_booked Table
+
+    public static String plyer_booked_Table="plyer_booked";
+    public static String booking_time = "booking_time";
+    public static String match_no_plyer_booked="match_no";
+    public static  String player_id_plyer_booked = "player_id";
+    public static String team_id_plyer_booked="team_id";
+    public static  String sent_off = "sent_off";
+    public static  String play_schedule = "play_schedule";
+    public static  String play_half = "play_half";
+
+
+//    player_in_out Table
+    public static String player_in_out_Table="player_in_out";
+    public static String match_no_player_in_out="match_no";
+    public static  String player_id_player_in_out = "player_id";
+    public static String team_id_player_in_out="team_id";
+    public static  String time_in_out = "time_in_out";
+    public static  String play_schedule_player_in_out = "play_schedule";
+    public static  String play_half_player_in_out = "play_half";
+
+//    match_captain Table
+    public static String match_captain_Table="match_captain";
+    public static String match_no_match_captain="match_no";
+    public static  String player_id_match_captain = "player_id";
+    public static String team_id_match_captain="team_id";
+
+// team_coaches Table
+    public static String team_coaches_Table="team_coaches";
+    public static String match_no_team_coaches="match_no";
+    public static  String player_id_team_coaches = "player_id";
+    public static String team_id_team_coaches="team_id";
+
+//    penalty_gk Table
+    public static String penalty_gk_Table="penalty_gk";
+    public static String match_no_penalty_gk="match_no";
+    public static  String player_id_penalty_gk = "player_gk";
+    public static String team_id_penalty_gk="team_id";
+
+//    playing_position Table
+    public static String playing_position_Table="playing_position";
+    public static String position_id="position_id";
+    public static  String position_desc = "position_desc";
+
+
 
 
 
