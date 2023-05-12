@@ -13,9 +13,9 @@ public class Utils {
 
 
     /// Player table variables
-    public static String Plyer_Table="plyer";
-    public static String plyer_id="plyer_id";
-    public static  String team_id_plyer = "team_id";
+    public static String Player_Table="plyer";
+    public static String Player_id="plyer_id";
+    public static  String team_id_Player = "team_id";
     public static  String jersey_no = "jersey_no";
     public static  String player_name = "player_name";
     public static String position_to_play="position_to_play";
@@ -96,11 +96,11 @@ public class Utils {
 
 // player_booked Table
 
-    public static String plyer_booked_Table="plyer_booked";
+    public static String Player_booked_Table="player_booked";
     public static String booking_time = "booking_time";
-    public static String match_no_plyer_booked="match_no";
-    public static  String player_id_plyer_booked = "player_id";
-    public static String team_id_plyer_booked="team_id";
+    public static String match_no_Player_booked="match_no";
+    public static  String player_id_Player_booked = "player_id";
+    public static String team_id_Player_booked="team_id";
     public static  String sent_off = "sent_off";
     public static  String play_schedule = "play_schedule";
     public static  String play_half = "play_half";

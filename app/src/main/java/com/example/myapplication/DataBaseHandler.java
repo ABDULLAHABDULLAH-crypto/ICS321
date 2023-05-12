@@ -1,10 +1,15 @@
 package com.example.myapplication;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.nfc.Tag;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -80,17 +85,17 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
         // Player query
         /*##############################################################*/
-        String query_plyer = "CREATE TABLE " + Utils.Plyer_Table +
-                " (" + Utils.plyer_id + " INTEGER NOT NULL," +
-                Utils.team_id_plyer+ " INTEGER NOT NULL," +
+        String query_Player = "CREATE TABLE " + Utils.Player_Table +
+                " (" + Utils.Player_id + " INTEGER NOT NULL," +
+                Utils.team_id_Player+ " INTEGER NOT NULL," +
                 Utils.jersey_no+ " INTEGER NOT NULL," +
                 Utils.player_name+" VARCHAR"+"(40)"+ "NOT NULL," +
                 Utils.position_to_play+"CHAR NOT NULL," +
                 Utils.dt_of_bir+"DATE,"+
-                "PRIMARY KEY (" +Utils.plyer_id + "," + Utils.team_id_plyer + ") , " +
-                "FOREIGN KEY ( "+ Utils.team_id_plyer + ") REFERENCES " + Utils.Plyer_Table + " (" + Utils.team_id_plyer +" ));";
+                "PRIMARY KEY (" +Utils.Player_id + "," + Utils.team_id_Player + ") , " +
+                "FOREIGN KEY ( "+ Utils.team_id_Player + ") REFERENCES " + Utils.Player_Table + " (" + Utils.team_id_Player +" ));";
 
-        db.execSQL(query_plyer);
+        db.execSQL(query_Player);
 //        refree Table
         String query_referee = "CREATE TABLE " + Utils.refree_Table +
                 " (" + Utils.main_referee_id + " INTEGER NOT NULL," +
@@ -115,7 +120,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 "PRIMARY KEY (" +Utils.main_match_no+") , " +
                 "FOREIGN KEY ( "+ Utils.match_referee_id + ") REFERENCES " + TABLE_NAME + " (" + Utils.main_referee_id +" ),"+
                 "FOREIGN KEY ( "+ Utils.venue_id + ") REFERENCES " + TABLE_NAME + " (" + Utils.main_venue_id +" ),"+
-                "FOREIGN KEY ( "+ Utils.player_of_match + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id+" ));";
+                "FOREIGN KEY ( "+ Utils.player_of_match + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id+" ));";
 
         db.execSQL(Match_plyed_Table);
 
@@ -185,7 +190,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 + Utils.goal_half + " INTEGER, "
                 + "PRIMARY KEY (" + Utils.goal_id + "), "
                 + "FOREIGN KEY ( "+ Utils.team_id_goal_details + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
-                + "FOREIGN KEY ( "+ Utils.player_id_goal_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_goal_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
                 + "FOREIGN KEY ( "+ Utils.match_no_goal_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
 
@@ -205,7 +210,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 + Utils.kick_no + " INTEGER NOT NULL,"
                 + "PRIMARY KEY (" + Utils.kick_id + "), "
                 + "FOREIGN KEY ( "+ Utils.team_id_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
-                + "FOREIGN KEY ( "+ Utils.player_id_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
                 + "FOREIGN KEY ( "+ Utils.match_no_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
         db.execSQL(penalty_shootout_query);
@@ -213,17 +218,17 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
         // player_booked Table
 
-        String player_booked_query = "CREATE TABLE " + Utils.plyer_booked_Table +
-                " (" + Utils.match_no + " INTEGER NOT NULL,"
-                + Utils.team_id_plyer_booked + " INTEGER NOT NULL,"
-                + Utils.player_id_plyer_booked + " INTEGER NOT NULL,"
+        String player_booked_query = "CREATE TABLE " + Utils.Player_booked_Table +
+                " (" + Utils.match_no_Player_booked + " INTEGER NOT NULL,"
+                + Utils.team_id_Player_booked + " INTEGER NOT NULL,"
+                + Utils.player_id_Player_booked + " INTEGER NOT NULL,"
                 + Utils.booking_time + " INTEGER NOT NULL,"
                 + Utils.sent_off + " CHAR"+"(1)"+"NOT NULL,"
                 + Utils.play_schedule + " CHAR"+"(2)"+"NOT NULL,"
                 + Utils.play_half + " INTEGER NOT NULL,"
-                + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_plyer_booked + ", " + Utils.player_id_plyer_booked + "), "
-                + "FOREIGN KEY (" + Utils.team_id_plyer_booked + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
-                + "FOREIGN KEY (" + Utils.player_id_plyer_booked + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_Player_booked + ", " + Utils.player_id_Player_booked + "), "
+                + "FOREIGN KEY (" + Utils.team_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY (" + Utils.player_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
                 + "FOREIGN KEY (" + Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
         db.execSQL(player_booked_query);
@@ -260,8 +265,8 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_Team);
-        db.execSQL("DROP TABLE IF EXISTS " + Utils.Plyer_Table);
-        db.execSQL("DROP TABLE IF EXISTS " + Utils.Plyer_Table);
+        db.execSQL("DROP TABLE IF EXISTS " + Utils.Player_Table);
+        db.execSQL("DROP TABLE IF EXISTS " + Utils.Player_Table);
         db.execSQL("DROP TABLE IF EXISTS " + Utils.Venue_Table);
         db.execSQL("DROP TABLE IF EXISTS " + Utils.match_played_table);
         onCreate(db);
@@ -282,31 +287,104 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
        }
     }
 
-    public void add_team (int idOfTheTournament , int teamID , String teamGroup , int matchPlayed ,
-                         int won , int draw , int lost ,int goalFor, int goalAgainst , int goalDiff , int points , int groupPosition){
+    public void add_player (int player_id , int teamID , int jersey_no , String player_name ,
+                         String position_to_play , String dt_of_bir ){
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues cv = new ContentValues();
 
-            cv.put(tr_id , idOfTheTournament);
-            cv.put(team_id, teamID);
-            cv.put(team_group, teamGroup);
-            cv.put(match_played,matchPlayed);
-            cv.put(wonT,won);
-            cv.put(drawT,draw);
-            cv.put(lostT,lost);
-            cv.put(goal_for,goalFor);
-            cv.put(goal_against, goalAgainst);
-            cv.put(goal_diff, goalDiff);
-            cv.put(pointsT,points);
-            cv.put(group_position,groupPosition);
+        cv.put(Utils.Player_id , player_id);
+        cv.put(Utils.team_id_Player, teamID);
+        cv.put(Utils.jersey_no , jersey_no);
+        cv.put(Utils.results, player_name);
+        cv.put(Utils.position_to_play, position_to_play);
+        cv.put(Utils.dt_of_bir, dt_of_bir);
+
         long result =  db.insert(TABLE_NAME_Team, null, cv);
         if (result == -1){
             Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    public void add_played_match(int match_no , String play_stage , String play_date , String results ,
+                          String decided_by , String goal_score , int venue_id ,int referee_id, int audience , int player_of_match , int stop1_sec , int stop2_sec){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(Utils.main_match_no , match_no);
+        cv.put(Utils.play_stage, play_stage);
+        cv.put(Utils.play_date , play_date);
+        cv.put(Utils.results, results);
+        cv.put(Utils.venue_id , venue_id);
+        cv.put(Utils.match_referee_id, referee_id);
+        cv.put(Utils.audience , audience);
+        cv.put(Utils.player_of_match, player_of_match);
+        cv.put(Utils.stop1_sec , stop1_sec);
+        cv.put(Utils.stop2_sec, stop2_sec);
+
+        long result =  db.insert(Utils.match_played_table, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void insertData(){
+//        played match
+
+        add_played_match(1, "G", "2020-03-11", "WIN", "N", "2-1",11,7001,5113,1015,131,242);
+        add_played_match(2, "G", "2020-03-11", "DRAW", "N", "1-1",22,7002,510,1003,111,272);
+        add_played_match(3, "G", "2020-03-11", "DRAW", "N", "1-1",33,7002,510,1003,111,272);
+        add_played_match(4, "G", "2020-03-11", "DRAW", "N", "1-1",11,7002,510,1003,111,272);
+        add_played_match(5, "G", "2020-03-11", "DRAW", "N", "1-1",44,7002,510,1003,111,272);
+        add_played_match(6, "G", "2020-03-11", "DRAW", "N", "1-1",22,7002,510,1003,111,272);
+        add_played_match(7, "G", "2020-03-11", "DRAW", "N", "1-1",33,7002,510,1003,111,272);
+//        player
+        add_player(1001,1214,1, "Ahmed", "GK", "1999-03-10");
+        add_player(1008,1214,2, "Khalid", "DF", "1977-02-12");
+        add_player(1016,1214,3, "Saeed", "MF", "1999-08-05");
+        add_player(1007,1215,1, "Majid", "DF", "1998-02-20");
+        add_player(1013,1215,5, "Fahd", "MF", "1997-07-27");
+        add_player(1010,1215,6, "Mohammed", "DF", "1992-11-20");
+        add_player(1004,1215,7, "Ali", "DF", "1995-10-11");
+        add_player(1012,1215,8, "Raed", "MF", "1997-01-05");
+        add_player(1017,1215,9, "Mousa", "MF", "1996-12-17");
+        add_player(1023,1216,1, "Naeem", "GK", "1991-05-27");
+        add_player(1022,1216,4, "Yasir", "FD", "1998-07-15");
+        add_player(1003,1217,2, "Nasr", "GK", "1997-09-25");
+        add_player(1015,1217,13, "Ashraf", "MF", "1994-01-16");
+        add_player(1019,1217,14, "Hassan", "MF", "1991-03-28");
+        add_player(1009,1217,15, "Abdullah", "DF", "1996-06-09");
+        add_player(1021,1217,16, "Bassam", "FD", "1999-07-27");
+
+
+//        Tournament
+
+        addTournament(1, "Faculty Tournament", "2023-03-10", "2023-03-25");
+        addTournament(2, "Open Tournament", "2023-03-15", "2023-03-30");
+        addTournament(3, "Student Tournament", "2022-12-10", "2022-12-02");
+        addTournament(4, "Staff Tournament", "2023-02-15", "2023-02-25");
+        addTournament(5, "Annual Tournament", "2023-01-01", "2023-01-15");
+
+    }
+
+
+//    Browse all match results of a given tournament sorted by date.
+    public void Query_browse_all_Tournament(String tournament){
+    SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("select * from match_played,Tournament",null,null);
+        while(cursor.moveToNext()){
+            Log.e(TAG,"Browse all match results of a given tournament sorted by date"+cursor.getString(1)+"message is :"+ cursor.getString(2),null);
+
+        }
+        cursor.close();
 
 
     }
+
+
 
 }
