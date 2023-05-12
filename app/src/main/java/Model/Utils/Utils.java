@@ -128,6 +128,7 @@ public class Utils {
     public static String team_coaches_Table="team_coaches";
     public static String match_no_team_coaches="match_no";
     public static  String player_id_team_coaches = "player_id";
+    public static String tr_id = "tr_id";
     public static String team_id_team_coaches="team_id";
 
 //    penalty_gk Table

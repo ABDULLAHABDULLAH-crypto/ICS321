@@ -273,10 +273,33 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
         //team_coaches Table
 
+        String query_team_coaches = "CREATE TABLE " + Utils.team_coaches_Table +
+                " (" + Utils.team_id_team_coaches + " INTEGER NOT NULL,"
+                + Utils.tr_id + " INTEGER NOT NULL,"
+                + Utils.coach_id + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.team_id_team_coaches + ", " + Utils.tr_id + "), "
+                + "FOREIGN KEY (" + Utils.team_id_team_coaches + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY (" + Utils.tr_id + ") REFERENCES " + TABLE_NAME + " (" + Utils.tr_id + "), "
+                + "FOREIGN KEY (" + Utils.coach_id + ") REFERENCES " + TABLE_NAME + " (" + Utils.coach_id + "));";
+
+        db.execSQL(query_team_coaches);
 
 
 
         //penalty_gk Table
+
+
+        String query_penalty_gk = "CREATE TABLE " + Utils.penalty_gk_Table +
+                " (" + Utils.match_no_penalty_gk + " INTEGER NOT NULL,"
+                + Utils.team_id_penalty_gk + " INTEGER NOT NULL,"
+                + Utils.player_gk + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.match_no_penalty_gk + ", " + Utils.team_id_penalty_gk + "), "
+                + "FOREIGN KEY (" + Utils.team_id_penalty_gk + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY (" + Utils.player_gk + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
+                + "FOREIGN KEY (" + Utils.match_no_penalty_gk + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
+
+        db.execSQL(query_penalty_gk);
+
 
     }
 
