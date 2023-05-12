@@ -158,7 +158,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         String match_details_query = "CREATE TABLE " + Utils.match_details_Table +
                 " (" + Utils.match_no_match_details + " INTEGER NOT NULL," +
                 Utils.team_id_match_details+ " INTEGER NOT NULL," +
-                Utils.play_stage + " CHAR"+"(1)"+"NOT NULL,"+
+                Utils.play_stage_match_details + " CHAR"+"(1)"+"NOT NULL,"+
                 Utils.win_lose + " CHAR"+"(1)"+"NOT NULL,"+
                 Utils.decided_by + " CHAR"+"(1)"+"NOT NULL," +
                 Utils.goal_score+ " INTEGER NOT NULL," +
@@ -227,9 +227,9 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 + Utils.play_schedule + " CHAR"+"(2)"+"NOT NULL,"
                 + Utils.play_half + " INTEGER NOT NULL,"
                 + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_Player_booked + ", " + Utils.player_id_Player_booked + "), "
-                + "FOREIGN KEY (" + Utils.team_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
-                + "FOREIGN KEY (" + Utils.player_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
-                + "FOREIGN KEY (" + Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
+                + "FOREIGN KEY ( "+ Utils.team_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_Player_booked + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
+                + "FOREIGN KEY ( "+ Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
         db.execSQL(player_booked_query);
 
@@ -239,16 +239,35 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         //player_in_out Table
 
 
+        String player_in_out_query = "CREATE TABLE " +  Utils.player_in_out_Table +
+                " (" + Utils.match_no + " INTEGER NOT NULL,"
+                + Utils.team_id_player_in_out + " INTEGER NOT NULL,"
+                + Utils.player_id_player_in_out + " INTEGER NOT NULL,"
+                + Utils.in_out + " CHAR"+"(1)"+"NOT NULL,"
+                + Utils.time_in_out + " INTEGER NOT NULL,"
+                + Utils.play_schedule + " CHAR"+"(2)"+"NOT NULL,"
+                + Utils.play_half + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_player_in_out + "), "
+                + "FOREIGN KEY ( "+ Utils.team_id_player_in_out + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_player_in_out + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
+                + "FOREIGN KEY ( "+ Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
-
-
+        db.execSQL(player_in_out_query);
 
 
 
         // match_captain Table
 
+        String match_captain_query = "CREATE TABLE " + Utils.match_captain_Table +
+                " (" + Utils.match_no_match_captain + " INTEGER NOT NULL,"
+                + Utils.team_id_match_captain + " INTEGER NOT NULL,"
+                + Utils.player_id_match_captain + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_match_captain + "), "
+                + "FOREIGN KEY (" + Utils.team_id_match_captain + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY (" + Utils.player_id_match_captain + ") REFERENCES " + TABLE_NAME + " (" + Utils.Player_id + "), "
+                + "FOREIGN KEY (" + Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
-
+        db.execSQL(match_captain_query);
 
 
 

@@ -112,6 +112,9 @@ public class Utils {
     public static  String player_id_player_in_out = "player_id";
     public static String team_id_player_in_out="team_id";
     public static  String time_in_out = "time_in_out";
+
+    public static  String in_out = "time_in_out";
+
     public static  String play_schedule_player_in_out = "play_schedule";
     public static  String play_half_player_in_out = "play_half";
 
