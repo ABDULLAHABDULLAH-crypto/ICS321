@@ -128,6 +128,46 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 "PRIMARY KEY ( "+ Utils.main_referee_id + "))";
         db.execSQL(query_Venue);
 
+  // plying_position query
+        String query_plying_position = "CREATE TABLE " + Utils.playing_position_Table +
+                " (" + Utils.position_id + "  CHAR"+"(2)"+ "NOT NULL," +
+                Utils.position_desc + " VARCHAR"+"(15)"+ "NOT NULL," +
+                "PRIMARY KEY ( "+ Utils.position_id+ "))";
+        db.execSQL(query_plying_position);
+
+//        coach query
+        String query_coach = "CREATE TABLE " + Utils.coach_table +
+                " (" + Utils.coach_id + "INTEGER NOT NULL," +
+                Utils.coach_name + " VARCHAR"+"(15)"+ "NOT NULL," +
+                "PRIMARY KEY ( "+ Utils.coach_id+ "))";
+        db.execSQL(query_coach);
+
+        //        asst_referee query
+        String query_asst_referee= "CREATE TABLE " + Utils.asst_referee_Table +
+                " (" + Utils.main_asst_ref_id + "INTEGER NOT NULL," +
+                Utils.asst_ref_name +" VARCHAR"+"(40)"+ "NOT NULL," +
+                "PRIMARY KEY ( "+ Utils.main_asst_ref_id+ "))";
+        db.execSQL(query_asst_referee);
+
+//          match_details query
+        String match_details_query = "CREATE TABLE " + Utils.match_details_Table +
+                " (" + Utils.match_no_match_details + " INTEGER NOT NULL," +
+                Utils.team_id_match_details+ " INTEGER NOT NULL," +
+                Utils.play_stage + " CHAR"+"(1)"+"NOT NULL,"+
+                Utils.win_lose + " CHAR"+"(1)"+"NOT NULL,"+
+                Utils.decided_by + " CHAR"+"(1)"+"NOT NULL," +
+                Utils.goal_score+ " INTEGER NOT NULL," +
+                Utils.penalty_score + " INTEGER,"+
+                Utils.asst_ref + " INTEGER NOT NULL," +
+                Utils.player_gk + " INTEGER NOT NULL," +
+                "PRIMARY KEY (" +Utils.match_no_match_details+","+Utils.team_id_match_details+") , " +
+                "FOREIGN KEY ( "+ Utils.team_id_match_details + ") REFERENCES " + TABLE_NAME + " (" + team_id+" ),"+
+                "FOREIGN KEY ( "+ Utils.asst_ref + ") REFERENCES " + TABLE_NAME + " (" + Utils.asst_ref +" ),"+
+                "FOREIGN KEY ( "+ Utils.asst_ref + ") REFERENCES " + TABLE_NAME + " (" + Utils.asst_ref +" ),"+
+                "FOREIGN KEY ( "+ Utils.match_no_match_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no+" ));";
+
+        db.execSQL(match_details_query);
+
 
 
 
