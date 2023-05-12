@@ -348,6 +348,29 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
     }
+    public void add_team (int idOfTheTournament , int teamID , String teamGroup , int matchPlayed ,
+                          int won , int draw , int lost ,int goalFor, int goalAgainst , int goalDiff , int points , int groupPosition){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(tr_id , idOfTheTournament);
+        cv.put(team_id, teamID);
+        cv.put(team_group, teamGroup);
+        cv.put(match_played,matchPlayed);
+        cv.put(wonT,won);
+        cv.put(drawT,draw);
+        cv.put(lostT,lost);                              // !!! re added by osama !!!
+        cv.put(goal_for,goalFor);
+        cv.put(goal_against, goalAgainst);
+        cv.put(goal_diff, goalDiff);
+        cv.put(pointsT,points);
+        cv.put(group_position,groupPosition);
+        long result =  db.insert(TABLE_NAME_Team, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
     public void add_played_match(int match_no , String play_stage , String play_date , String results ,
