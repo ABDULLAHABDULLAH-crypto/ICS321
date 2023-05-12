@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import Utils.Utils;
+import Model.Utils.Utils;
 public class DataBaseHandler  extends SQLiteOpenHelper {
 
     private Context context ;
@@ -98,7 +98,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 "PRIMARY KEY ( "+ Utils.main_referee_id + "))";
         db.execSQL(query_referee);
 
-//        Match_plyed Table
+//        Match_played Table
         String Match_plyed_Table = "CREATE TABLE " + Utils.match_played_table +
                 " (" + Utils.main_match_no + " INTEGER NOT NULL," +
                 Utils.play_stage+ " CHAR"+"(1)"+"NOT NULL," +
@@ -170,6 +170,89 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
 
 
+        // goal_details query
+
+
+        String query_goal_details = "CREATE TABLE " + Utils.goal_details_table +
+                " (" + Utils.goal_id + " INTEGER NOT NULL,"
+                + Utils.match_no + " INTEGER NOT NULL,"
+                + Utils.player_id_goal_details + " INTEGER NOT NULL,"
+                + Utils.team_id_goal_details + " INTEGER NOT NULL,"
+                + Utils.goal_time + " INTEGER NOT NULL,"
+                + Utils.goal_type + " CHAR"+"(1)"+"NOT NULL,"
+                + Utils.play_stage + " CHAR"+"(1)"+"NOT NULL,"
+                + Utils.goal_schedule + " CHAR"+"(2)"+"NOT NULL,"
+                + Utils.goal_half + " INTEGER, "
+                + "PRIMARY KEY (" + Utils.goal_id + "), "
+                + "FOREIGN KEY ( "+ Utils.team_id_goal_details + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_goal_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "FOREIGN KEY ( "+ Utils.match_no_goal_details + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
+
+
+        db.execSQL(query_goal_details);
+
+
+
+
+        // penalty_shootout query
+
+        String penalty_shootout_query = "CREATE TABLE " + Utils.penalty_shootout_Table +
+                " (" + Utils.kick_id + " INTEGER NOT NULL,"
+                + Utils.match_no + " INTEGER NOT NULL,"
+                + Utils.team_id_penalty_shootout + " INTEGER NOT NULL,"
+                + Utils.player_id_penalty_shootout + " INTEGER NOT NULL,"
+                + Utils.score_goal + " CHAR"+"(1)"+"NOT NULL,"
+                + Utils.kick_no + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.kick_id + "), "
+                + "FOREIGN KEY ( "+ Utils.team_id_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY ( "+ Utils.player_id_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "FOREIGN KEY ( "+ Utils.match_no_penalty_shootout + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
+
+        db.execSQL(penalty_shootout_query);
+
+
+        // player_booked Table
+
+        String player_booked_query = "CREATE TABLE " + Utils.plyer_booked_Table +
+                " (" + Utils.match_no + " INTEGER NOT NULL,"
+                + Utils.team_id_plyer_booked + " INTEGER NOT NULL,"
+                + Utils.player_id_plyer_booked + " INTEGER NOT NULL,"
+                + Utils.booking_time + " INTEGER NOT NULL,"
+                + Utils.sent_off + " CHAR"+"(1)"+"NOT NULL,"
+                + Utils.play_schedule + " CHAR"+"(2)"+"NOT NULL,"
+                + Utils.play_half + " INTEGER NOT NULL,"
+                + "PRIMARY KEY (" + Utils.match_no + ", " + Utils.team_id_plyer_booked + ", " + Utils.player_id_plyer_booked + "), "
+                + "FOREIGN KEY (" + Utils.team_id_plyer_booked + ") REFERENCES " + TABLE_NAME + " (" + team_id + "), "
+                + "FOREIGN KEY (" + Utils.player_id_plyer_booked + ") REFERENCES " + TABLE_NAME + " (" + Utils.plyer_id + "), "
+                + "FOREIGN KEY (" + Utils.match_no + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
+
+        db.execSQL(player_booked_query);
+
+
+
+
+        //player_in_out Table
+
+
+
+
+
+
+
+
+        // match_captain Table
+
+
+
+
+
+
+        //team_coaches Table
+
+
+
+
+        //penalty_gk Table
 
     }
 

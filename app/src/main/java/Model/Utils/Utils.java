@@ -1,4 +1,4 @@
-package Utils;
+package Model.Utils;
 
 public class Utils {
 
@@ -55,8 +55,8 @@ public class Utils {
     public static String coach_name="coach_name";
 
 //  asst_referee_Table
-    public static String  asst_referee_Table=" asst_referee";
-    public static String asst_ref_id="asst_ref_id";
+//    public static String  asst_referee_Table=" asst_referee";       ??????????????????????????????
+//    public static String asst_ref_id="asst_ref_id";                 ?????????????????????????????? duplicated
 
 //    match_details_Table
     public static String match_details_Table="match_details";
