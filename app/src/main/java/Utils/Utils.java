@@ -27,7 +27,13 @@ public class Utils {
     public static String refree_Table="referee";
     public static String main_referee_id="referee_id";
     public static String referee_name="referee_name";
+    
+    //    asst_referee Table
+    public static String asst_referee_Table="asst_referee";
+    public static String main_asst_ref_id="asst_ref_id";
+    public static String asst_ref_name="asst_ref_name";
 
+    
 
 //  match_played Table
     public static String  match_played_table=" match_played";
