@@ -8,14 +8,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.nfc.Tag;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
 import Model.Utils.Utils;
 public class DataBaseHandler  extends SQLiteOpenHelper {
-
+    private SQLiteDatabase db=this.getReadableDatabase();
     private Context context ;
 
 
@@ -438,16 +441,17 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
 
 //    Browse all match results of a given tournament sorted by date.
-    public void Query_browse_all_Tournament(String tournament){
-    SQLiteDatabase db=this.getReadableDatabase();
+    public ArrayList<String> Query_browse_all_Tournament(String tournament){
+        ArrayList<String> list=new ArrayList<>();
         Cursor cursor=db.rawQuery("select * from match_played,Tournament",null,null);
         while(cursor.moveToNext()){
-            Log.e(TAG,"Browse all match results of a given tournament sorted by date"+cursor.getString(1)+"message is :"+ cursor.getString(2),null);
+            list.add("Browse all match results of a given tournament sorted by date"+cursor.getString(1)+"message is :"+ cursor.getString(2));
 
         }
         cursor.close();
 
 
+        return list;
     }
 
 

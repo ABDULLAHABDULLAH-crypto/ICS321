@@ -6,17 +6,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
 import com.example.myapplication.Admin.AdminActivity;
+import com.example.myapplication.Admin.activity_user;
 import com.example.myapplication.User.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView ;
-    Button redCard ,highestP,logIn;
+    Button redCard ,highestP,logIn,match_result;
     RadioButton userRadioButton,adminRadioButton;
+    DataBaseHandler db;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-
+        db=new DataBaseHandler(this);
         recyclerView = findViewById(R.id.recyclerView);
         redCard = findViewById(R.id.btnPlayerRedCard);
         highestP = findViewById(R.id.btnPlayerWithHighsetGoal);
@@ -42,5 +46,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
                 }
         });
+
+
+
     }
+    public void MatchResult(View v){
+    Intent intent=new Intent(MainActivity.this, activity_user.class);
+    startActivity(intent);
+    }
+
 }

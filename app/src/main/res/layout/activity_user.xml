@@ -7,6 +7,18 @@
     tools:context=".User.UserActivity">
 
     <Button
+        android:id="@+id/match_results"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:onClick="MatchResult"
+        android:text="Match Results"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPlayerRedCard" />
+
+    <Button
         android:id="@+id/btnPlayerRedCard"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
