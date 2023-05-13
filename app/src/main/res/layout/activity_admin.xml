@@ -10,20 +10,19 @@
         android:id="@+id/btnDeleteTourment2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Delete Tourment"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddTeam"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/AddTeam" />
 
     <Button
         android:id="@+id/btnAddTourment"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
         android:text="Add Tourment"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,33 +31,43 @@
         android:id="@+id/TeamCaption"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Select caption for a team"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddTeam"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteTourment2" />
 
     <Button
         android:id="@+id/ApprovePlayer"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Approve Player "
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddTeam"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintTop_toBottomOf="@+id/TeamCaption" />
 
     <Button
         android:id="@+id/AddTeam"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Add Team"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddTourment" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Admin page"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

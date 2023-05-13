@@ -53,7 +53,6 @@ public class AddTeamActivity extends AppCompatActivity {
                         Integer.parseInt(goalDiff.getText().toString().trim()),
                         Integer.parseInt(points.getText().toString().trim()),
                         Integer.parseInt(groupPosition.getText().toString().trim())
-
                 );
             }
         });

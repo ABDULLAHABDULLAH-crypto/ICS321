@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         db=new DataBaseHandler(this);
+        db.insertData();
+
         recyclerView = findViewById(R.id.recyclerView);
         redCard = findViewById(R.id.btnPlayerRedCard);
         highestP = findViewById(R.id.btnPlayerWithHighsetGoal);

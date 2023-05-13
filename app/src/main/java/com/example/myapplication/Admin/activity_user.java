@@ -23,8 +23,7 @@ public class activity_user extends AppCompatActivity {
         super.onCreate(savedInsnacesState);
         setContentView(R.layout.activity_user);
         listView=findViewById(R.id.recyclerView);
-        db=new DataBaseHandler(this);
-        db.insertData();
+
         
 
 

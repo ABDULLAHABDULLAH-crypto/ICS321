@@ -22,7 +22,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
     private Context context ;
 
 
-    private static final String DATABASE_NAME = "tournamentData";
+    private static final String DATABASE_NAME = "tournamentData.db";
     private static final int DATABASE_VERSION = 1;
 
     // tournament table
@@ -100,6 +100,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
 //        db.execSQL(query_Plyer);
 //        refree Table
+
         String query_referee = "CREATE TABLE " + Utils.refree_Table +
                 " (" + Utils.main_referee_id + " INTEGER NOT NULL," +
                 Utils.referee_name + " VARCHAR"+"(40)"+ "NOT NULL," +
@@ -135,7 +136,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 Utils.aud_capacity + " INTEGER NOT NULL," +
                 "PRIMARY KEY ( "+ Utils.main_venue_id + "))";
         db.execSQL(query_Venue);
-
+/*
   // plying_position query
         String query_plying_position = "CREATE TABLE " + Utils.playing_position_Table +
                 " (" + Utils.position_id + "  CHAR"+"(2)"+ "NOT NULL," +
@@ -291,7 +292,6 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 //
 //        //penalty_gk Table
 //
-
         String query_penalty_gk = "CREATE TABLE " + Utils.penalty_gk_Table +
                 " (" + Utils.match_no_penalty_gk + " INTEGER NOT NULL,"
                 + Utils.team_id_penalty_gk + " INTEGER NOT NULL,"
@@ -302,7 +302,8 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 + "FOREIGN KEY (" + Utils.match_no_penalty_gk + ") REFERENCES " + TABLE_NAME + " (" + Utils.match_no + "));";
 
         db.execSQL(query_penalty_gk);
-//
+        /*
+ */
 
     }
 
@@ -344,7 +345,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
         long result =  db.insert(Utils.Player_Table, null, cv);
         if (result == -1){
-            Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to insert add_player", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
@@ -365,6 +366,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         cv.put(goal_diff, goalDiff);
         cv.put(pointsT,points);
         cv.put(group_position,groupPosition);
+
         long result =  db.insert(TABLE_NAME_Team, null, cv);
         if (result == -1){
             Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
@@ -390,13 +392,15 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         cv.put(Utils.player_of_match, player_of_match);
         cv.put(Utils.stop1_sec , stop1_sec);
         cv.put(Utils.stop2_sec, stop2_sec);
+
         long result =  db.insert(Utils.match_played_table, null, cv);
         if (result == -1){
-            Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to insert add_played_match", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public void insertData(){
 //        played match
@@ -428,16 +432,15 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
 
 ////        Tournament
-
         addTournament(1, "Faculty Tournament", "2023-03-10", "2023-03-25");
         addTournament(2, "Open Tournament", "2023-03-15", "2023-03-30");
         addTournament(3, "Student Tournament", "2022-12-10", "2022-12-02");
         addTournament(4, "Staff Tournament", "2023-02-15", "2023-02-25");
         addTournament(5, "Annual Tournament", "2023-01-01", "2023-01-15");
     }
+
+
 //    Browse all match results of a given tournament sorted by date.
-
-
    Cursor read_match_result(){
         String query="SELECT * FROM tournament,Match_played WHERE tr_name='Student' ORDER BY play_date;";
         SQLiteDatabase db=this.getReadableDatabase();
@@ -448,6 +451,4 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 
     return cursor;
    }
-
-
 }
