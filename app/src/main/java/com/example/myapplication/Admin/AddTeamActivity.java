@@ -40,21 +40,21 @@ public class AddTeamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DataBaseHandler myDB = new DataBaseHandler(AddTeamActivity.this);
-//                myDB.add_team(
-//                        Integer.parseInt(idOfTheTournament.getText().toString().trim()),
-//                        Integer.parseInt(teamID.getText().toString().trim()),
-//                        teamGroup.getText().toString().trim(),
-//                        Integer.parseInt(matchPlayed.getText().toString().trim()),
-//                        Integer.parseInt(won.getText().toString().trim()),
-//                        Integer.parseInt(draw.getText().toString().trim()),
-//                        Integer.parseInt(lost.getText().toString().trim()),
-//                        Integer.parseInt(goalFor.getText().toString().trim()),
-//                        Integer.parseInt(goalAgainst.getText().toString().trim()),
-//                        Integer.parseInt(goalDiff.getText().toString().trim()),
-//                        Integer.parseInt(points.getText().toString().trim()),
-//                        Integer.parseInt(groupPosition.getText().toString().trim())
-//
-//                );
+                myDB.add_team(
+                        Integer.parseInt(idOfTheTournament.getText().toString().trim()),
+                        Integer.parseInt(teamID.getText().toString().trim()),
+                        teamGroup.getText().toString().trim(),
+                        Integer.parseInt(matchPlayed.getText().toString().trim()),
+                        Integer.parseInt(won.getText().toString().trim()),
+                        Integer.parseInt(draw.getText().toString().trim()),
+                        Integer.parseInt(lost.getText().toString().trim()),
+                        Integer.parseInt(goalFor.getText().toString().trim()),
+                        Integer.parseInt(goalAgainst.getText().toString().trim()),
+                        Integer.parseInt(goalDiff.getText().toString().trim()),
+                        Integer.parseInt(points.getText().toString().trim()),
+                        Integer.parseInt(groupPosition.getText().toString().trim())
+
+                );
             }
         });
     }

@@ -7,7 +7,19 @@
     tools:context=".User.UserActivity">
 
     <Button
-        android:id="@+id/match_results"
+        android:id="@+id/Team_members"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:onClick="MatchResult"
+        android:text="Team members"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPlayerRedCard" />
+
+    <Button
+        android:id="@+id/match_results2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -51,6 +63,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="570dp" />
+        app:layout_constraintGuide_begin="526dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

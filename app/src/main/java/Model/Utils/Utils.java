@@ -3,9 +3,9 @@ package Model.Utils;
 public class Utils {
 
 // Venue table
-    public static String Venue_Table="plyer";
-    public static String main_venue_id="plyer_id";
-    public static String venue_name="plyer_id";
+    public static String Venue_Table="Venue";
+    public static String main_venue_id="venue_id";
+    public static String venue_name="venue_name";
     public static String venue_status="venue_status";
     public static String aud_capacity="aud_capacity";
 
@@ -13,8 +13,8 @@ public class Utils {
 
 
     /// Player table variables
-    public static String Player_Table="plyer";
-    public static String Player_id="plyer_id";
+    public static String Player_Table="player";
+    public static String Player_id="player_id";
     public static  String team_id_Player = "team_id";
     public static  String jersey_no = "jersey_no";
     public static  String player_name = "player_name";
@@ -85,7 +85,6 @@ public class Utils {
 
 
 //  penalty_shootout Table
-
     public static String penalty_shootout_Table="penalty_shootout";
     public static String kick_id = "kick_id";
     public static String match_no_penalty_shootout="match_no";
@@ -93,6 +92,7 @@ public class Utils {
     public static String team_id_penalty_shootout="team_id";
     public static  String score_goal = "score_goal";
     public static  String kick_no = "kick_no";
+
 
 // player_booked Table
 
