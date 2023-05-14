@@ -58,9 +58,6 @@ public class Utils {
     public static String coach_id="coach_id";
     public static String coach_name="coach_name";
 
-//  asst_referee_Table
-//    public static String  asst_referee_Table=" asst_referee";       ??????????????????????????????
-//    public static String asst_ref_id="asst_ref_id";                 ?????????????????????????????? duplicated
 
 //    match_details_Table
     public static String match_details_Table="match_details";
@@ -108,19 +105,6 @@ public class Utils {
     public static  String sent_off = "sent_off";
     public static  String play_schedule = "play_schedule";
     public static  String play_half = "play_half";
-
-
-//    player_in_out Table
-    public static String player_in_out_Table="player_in_out";
-    public static String match_no_player_in_out="match_no";
-    public static  String player_id_player_in_out = "player_id";
-    public static String team_id_player_in_out="team_id";
-    public static  String time_in_out = "time_in_out";
-
-    public static  String in_out = "time_in_out";
-
-    public static  String play_schedule_player_in_out = "play_schedule";
-    public static  String play_half_player_in_out = "play_half";
 
 //    match_captain Table
     public static String match_captain_Table="match_captain";

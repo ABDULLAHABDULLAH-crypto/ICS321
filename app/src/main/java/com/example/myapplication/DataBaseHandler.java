@@ -329,6 +329,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
     public void add_team (  int teamID, int idOfTheTournament , String teamGroup , int matchPlayed ,
                           int won , int draw , int lost ,int goalFor, int goalAgainst , int goalDiff , int points , int groupPosition){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -380,122 +381,21 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         }
     }
 
+    public void selectCaptain (int matchID , int teamID , int playerID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
 
-    public void insertData(){
-        String[] insert ={
-                "INSERT INTO tournament VALUES (1, 'Faculty Tournament', '2023-03-10', '2023-03-25');",
-                "INSERT INTO tournament VALUES (2, 'Open Tournament', '2023-03-15', '2023-03-30');",
-                "INSERT INTO tournament VALUES (3, 'Student Tournament', '2022-12-10', '2022-12-02');",
-                "INSERT INTO tournament VALUES (4, 'Staff Tournament', '2023-02-15', '2023-02-25');",
-                "INSERT INTO tournament VALUES (5, 'Annual Tournament', '2023-01-01', '2023-01-15');",
-
-
-                "INSERT INTO team VALUES (1214,1,'A',3,0,3,0,4,4,0,3,1);",
-                "INSERT INTO team VALUES (1215,1,'B',3,1,1,1,3,4,-1,4,2);",
-                "INSERT INTO team VALUES (1216,2,'C',3,1,1,1,0,0,0,4,2);",
-                "INSERT INTO team VALUES (1217,2,'A',3,1,1,1,1,4,-3,4,1);",
-                "INSERT INTO team VALUES (1216,3,'A',3,1,1,1,2,4,-2,4,3);",
-                "INSERT INTO team VALUES (1217,3,'B',3,1,1,1,4,2,2,4,1);",
-                "INSERT INTO team VALUES (1218,3,'C',3,1,1,1,1,2,-1,4,2);",
-
-
-
-                "INSERT INTO venue VALUES (11, 'Main Stadium', 'Y', 20000);",
-                "INSERT INTO venue VALUES (22, 'Indoor Stadium', 'Y', 1000);",
-                "INSERT INTO venue VALUES (33, 'Jabal Field', 'N', 500);",
-                "INSERT INTO venue VALUES (44, 'Student Field', 'Y', 2000);",
-
-
-                "INSERT INTO playing_position VALUES ('GK', 'Goalkeepers');",
-                "INSERT INTO playing_position VALUES ('DF', 'Defenders');",
-                "INSERT INTO playing_position VALUES ('MF', 'Midfielders');",
-                "INSERT INTO playing_position VALUES ('FD', 'Forwards');",
-
-
-                "INSERT INTO player VALUES (1001,1214,1, 'Ahmed', 'GK', '1999-03-10');",
-                "INSERT INTO player VALUES (1008,1214,2, 'Khalid', 'DF', '1977-02-12');",
-                "INSERT INTO player VALUES (1007,1215,1, 'Majid', 'DF', '1998-02-20');",
-                "INSERT INTO player VALUES (1016,1214,3, 'Saeed', 'MF', '1999-08-05');",
-                "INSERT INTO player VALUES (1013,1215,5, 'Fahd', 'MF', '1997-07-27');",
-                "INSERT INTO player VALUES (1010,1215,6, 'Mohammed', 'DF', '1992-11-20');",
-                "INSERT INTO player VALUES (1004,1215,7, 'Ali', 'DF', '1995-10-11');",
-                "INSERT INTO player VALUES (1012,1215,8, 'Raed', 'MF', '1997-01-05');",
-                "INSERT INTO player VALUES (1017,1215,9, 'Mousa', 'MF', '1996-12-17');",
-                "INSERT INTO player VALUES (1023,1216,1, 'Naeem', 'GK', '1991-05-27');",
-                "INSERT INTO player VALUES (1022,1216,4, 'Yasir', 'FD', '1998-07-15');",
-                "INSERT INTO player VALUES (1003,1217,2, 'Nasr', 'GK', '1997-09-25');",
-                "INSERT INTO player VALUES (1015,1217,13, 'Ashraf', 'MF', '1994-01-16');",
-                "INSERT INTO player VALUES (1019,1217,14, 'Hassan', 'MF', '1991-03-28');",
-                "INSERT INTO player VALUES (1009,1217,15, 'Abdullah', 'DF', '1996-06-09');",
-                "INSERT INTO player VALUES (1021,1217,16, 'Bassam', 'FD', '1999-07-27');",
-
-
-                "INSERT INTO referee VALUES (7001,'Hassan');",
-                "INSERT INTO referee VALUES (7002,'Robert');",
-                "INSERT INTO referee VALUES (7003,'Fayez');",
-                "INSERT INTO referee VALUES (7004, 'Mark');",
-                "INSERT INTO referee VALUES (7005,'Ahmad');",
-                "INSERT INTO referee VALUES (7006,'Faisal');",
-                "INSERT INTO referee VALUES (7007,'Noman');",
-
-
-                "INSERT INTO match_played VALUES (1, 'G', '2020-03-11', 'WIN', 'N', '2-1',11,7001,5113,1015,131,242);",
-                "INSERT INTO match_played VALUES (2, 'G', '2020-03-11', 'DRAW', 'N', '1-1',22,7002,510,1003,111,272);",
-                "INSERT INTO match_played VALUES (3, 'G', '2020-03-11', 'DRAW', 'N', '1-1',33,7002,510,1003,111,272);",
-                "INSERT INTO match_played VALUES (4, 'G', '2020-03-11', 'DRAW', 'N', '1-1',11,7002,510,1003,111,272);",
-                "INSERT INTO match_played VALUES (5, 'G', '2020-03-11', 'DRAW', 'N', '1-1',44,7002,510,1003,111,272);",
-                "INSERT INTO match_played VALUES (6, 'G', '2020-03-11', 'DRAW', 'N', '1-1',22,7002,510,1003,111,272);",
-                "INSERT INTO match_played VALUES (7, 'G', '2020-03-11', 'DRAW', 'N', '1-1',33,7002,510,1003,111,272);",
-
-
-                "INSERT INTO coach VALUES (9001,'Carlos');",
-                "INSERT INTO coach VALUES (9003,'Farhan');",
-                "INSERT INTO coach VALUES (9002,'Jameel');",
-
-
-
-                "INSERT INTO match_details VALUES (1, 1214, 'G', 'W', 'N', 1, 0,3001,1001);",
-                "INSERT INTO match_details VALUES (2, 1215, 'G', 'W', 'N', 2, 0,3004,1003);",
-
-                "INSERT INTO match_details VALUES (2, 1217, 'G', 'L', 'N', 2, 0,3003,1023);",
-                "INSERT INTO match_details VALUES (1, 1216, 'G', 'L', 'N', 1, 0,3001,1001);",
-                "INSERT INTO match_details VALUES (3, 1218, 'G', 'W', 'N', 2, 0,3005,1023);",
-
-
-                "INSERT INTO goal_details VALUES (1, 1, 1008, 1214, 72, 'N', 'G', 'NT',2);",
-                "INSERT INTO goal_details VALUES (2, 1, 1013, 1214, 82, 'N', 'G', 'NT',2);",
-                "INSERT INTO goal_details VALUES (3, 1, 1007, 1214, 72, 'N', 'G', 'NT',2);",
-                "INSERT INTO goal_details VALUES (4, 1, 1004, 1214, 12, 'N', 'G', 'NT',1);",
-                "INSERT INTO goal_details VALUES (5, 1, 1017, 1214, 15, 'N', 'G', 'NT',1);",
-                "INSERT INTO goal_details VALUES (6, 1, 1019, 1214, 32, 'N', 'G', 'NT',1);",
-
-
-
-                "INSERT INTO penalty_shootout VALUES (1, 1, 1215, 1019, 'N', 1);",
-                "INSERT INTO penalty_shootout VALUES (2, 5, 1217, 1009, 'Y', 4);",
-
-                "INSERT INTO player_booked VALUES (1, 1215, 1019, 36, 'N','NT', 1);",
-                "INSERT INTO player_booked VALUES (1, 1217, 1023, 76, 'Y','NT', 2);",
-
-
-                "INSERT INTO match_captain VALUES (1, 1214, 1019);",
-                "INSERT INTO match_captain VALUES (2, 1215, 1023);",
-
-                "INSERT INTO team_coaches VALUES (1214, 2, 9001);",
-                "INSERT INTO team_coaches VALUES (1215, 3, 9003);",
-
-                "INSERT INTO penalty_gk VALUES (1, 1214, 1023);",
-                "INSERT INTO penalty_gk VALUES (1, 1215, 1007);",
-
-
-                "INSERT INTO Card VALUES (1001,1,3);",
-                "INSERT INTO Card VALUES (1008,3,3);",
-                "INSERT INTO Card VALUES (1001,0,1);",
-
-        };
-        for (int i = 0 ;insert.length> i ; i++){
-            db.execSQL(insert[i]);
+        cv.put(Utils.match_no_match_captain , matchID);
+        cv.put(Utils.team_id_match_captain , teamID);
+        cv.put(Utils.player_id_match_captain , playerID);
+        long result =  db.insert(Utils.match_captain_Table, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed to insert Captain", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void insertData(){
     }
 
 
