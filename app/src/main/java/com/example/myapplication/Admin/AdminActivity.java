@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.example.myapplication.R;
 
 public class AdminActivity extends AppCompatActivity {
-        Button addTournament, addTeam , selectCaptain;
+        Button addTournament, addTeam , selectCaptain ,deleteTournament;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,12 @@ public class AdminActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+        deleteTournament = findViewById(R.id.btnDeleteTourment2);
+        deleteTournament.setOnClickListener((View) ->{
+            Intent intent = new Intent(AdminActivity.this, DeleteActivity.class);
+            startActivity(intent);
+        });
 
     }
 
