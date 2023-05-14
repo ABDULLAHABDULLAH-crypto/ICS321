@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 import com.example.myapplication.Admin.AdminActivity;
-import com.example.myapplication.Admin.activity_user;
 import com.example.myapplication.User.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         db=new DataBaseHandler(this);
-        db.insertData();
+//        db.insertData();
 
         recyclerView = findViewById(R.id.recyclerView);
         redCard = findViewById(R.id.btnPlayerRedCard);

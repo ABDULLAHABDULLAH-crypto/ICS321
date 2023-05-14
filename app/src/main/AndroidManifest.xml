@@ -18,6 +18,8 @@
         <activity
             android:name=".Admin.AddTeamActivity"
             android:exported="false" />
+        <activity android:name=".User.match_results"
+            android:exported="false" ></activity>
         <activity
             android:name=".Admin.AddTournamentActivity"
             android:exported="false" />

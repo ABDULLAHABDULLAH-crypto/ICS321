@@ -20,6 +20,7 @@ public class Utils {
     public static  String player_name = "player_name";
     public static String position_to_play="position_to_play";
     public static String dt_of_bir="dt_of_bir";
+    public static String player_goal="player_goal";
 
 // Card Table
     public static String cardTable ="Card";
