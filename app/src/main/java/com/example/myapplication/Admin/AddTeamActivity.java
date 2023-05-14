@@ -41,8 +41,9 @@ public class AddTeamActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DataBaseHandler myDB = new DataBaseHandler(AddTeamActivity.this);
                 myDB.add_team(
-                        Integer.parseInt(idOfTheTournament.getText().toString().trim()),
+
                         Integer.parseInt(teamID.getText().toString().trim()),
+                        Integer.parseInt(idOfTheTournament.getText().toString().trim()),
                         teamGroup.getText().toString().trim(),
                         Integer.parseInt(matchPlayed.getText().toString().trim()),
                         Integer.parseInt(won.getText().toString().trim()),

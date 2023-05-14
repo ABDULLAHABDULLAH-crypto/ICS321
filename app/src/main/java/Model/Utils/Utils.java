@@ -21,6 +21,10 @@ public class Utils {
     public static String position_to_play="position_to_play";
     public static String dt_of_bir="dt_of_bir";
 
+// Card Table
+    public static String cardTable ="Card";
+    public static String redCard = "red_card";
+    public static String yellowCard = "yellow_Card";
 
 
 // referee Table
