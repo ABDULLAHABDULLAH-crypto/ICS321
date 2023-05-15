@@ -93,6 +93,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                     Utils.player_name+" VARCHAR"+"(40)"+ "NOT NULL," +
                     Utils.position_to_play+" CHAR NOT NULL," +
                     Utils.dt_of_bir +" DATE,"+
+                    Utils.player_goal + " INTEGER NOT NULL ," +
                     " PRIMARY KEY (" + Utils.Player_id + "," + Utils.team_id_Player + "));";
                     db.execSQL(query_Player);
 
@@ -104,6 +105,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
                 Utils.player_name+" VARCHAR"+"(40)"+ "NOT NULL," +
                 Utils.position_to_play+" CHAR NOT NULL," +
                 Utils.dt_of_bir+" DATE,"+
+                Utils.player_goal + " INTEGER NOT NULL ," +
                 " PRIMARY KEY (" + Utils.Player_id + "," + Utils.team_id_Player + "));";
         db.execSQL(query_Player_Approve);
 
@@ -323,7 +325,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
     }
 
     public void add_player (int player_id , int teamID , int jersey_no , String player_name ,
-                         String position_to_play , String dt_of_bir ){
+                         String position_to_play , String dt_of_bir , int goals ){
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues cv = new ContentValues();
         cv.put(Utils.Player_id , player_id);
@@ -332,6 +334,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         cv.put(Utils.player_name, player_name);
         cv.put(Utils.position_to_play, position_to_play);
         cv.put(Utils.dt_of_bir, dt_of_bir);
+        cv.put(Utils.player_goal, goals);
 
         long result =  db.insert(Utils.Player_Table, null, cv);
         if (result == -1){
@@ -352,7 +355,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
     }
 
     public void add_player_approve (int player_id , int teamID , int jersey_no , String player_name ,
-                            String position_to_play , String dt_of_bir ){
+                            String position_to_play , String dt_of_bir,int goals ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Utils.Player_id , player_id);
@@ -361,6 +364,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         cv.put(Utils.player_name, player_name);
         cv.put(Utils.position_to_play, position_to_play);
         cv.put(Utils.dt_of_bir, dt_of_bir);
+        cv.put(Utils.player_goal, goals);
 
         long result =  db.insert(Utils.Player_Table_approve, null, cv);
         if (result == -1){
@@ -448,22 +452,22 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 //                "INSERT INTO playing_position VALUES ('FD', 'Forwards');",
 //
 //
-//                "INSERT INTO player VALUES (1001,1214,1, 'Ahmed', 'GK', '1999-03-10');",
-//                "INSERT INTO player VALUES (1008,1214,2, 'Khalid', 'DF', '1977-02-12');",
-//                "INSERT INTO player VALUES (1007,1215,1, 'Majid', 'DF', '1998-02-20');",
-//                "INSERT INTO player VALUES (1016,1214,3, 'Saeed', 'MF', '1999-08-05');",
-//                "INSERT INTO player VALUES (1013,1215,5, 'Fahd', 'MF', '1997-07-27');",
-//                "INSERT INTO player VALUES (1010,1215,6, 'Mohammed', 'DF', '1992-11-20');",
-//                "INSERT INTO player VALUES (1004,1215,7, 'Ali', 'DF', '1995-10-11');",
-//                "INSERT INTO player VALUES (1012,1215,8, 'Raed', 'MF', '1997-01-05');",
-//                "INSERT INTO player VALUES (1017,1215,9, 'Mousa', 'MF', '1996-12-17');",
-//                "INSERT INTO player VALUES (1023,1216,1, 'Naeem', 'GK', '1991-05-27');",
-//                "INSERT INTO player VALUES (1022,1216,4, 'Yasir', 'FD', '1998-07-15');",
-//                "INSERT INTO player VALUES (1003,1217,2, 'Nasr', 'GK', '1997-09-25');",
-//                "INSERT INTO player VALUES (1015,1217,13, 'Ashraf', 'MF', '1994-01-16');",
-//                "INSERT INTO player VALUES (1019,1217,14, 'Hassan', 'MF', '1991-03-28');",
-//                "INSERT INTO player VALUES (1009,1217,15, 'Abdullah', 'DF', '1996-06-09');",
-//                "INSERT INTO player VALUES (1021,1217,16, 'Bassam', 'FD', '1999-07-27');",
+//                "INSERT INTO player VALUES (1001,1214,1, 'Ahmed', 'GK', '1999-03-10' , 15);",
+//                "INSERT INTO player VALUES (1008,1214,2, 'Khalid', 'DF', '1977-02-12',20);",
+//                "INSERT INTO player VALUES (1007,1215,1, 'Majid', 'DF', '1998-02-20',0);",
+//                "INSERT INTO player VALUES (1016,1214,3, 'Saeed', 'MF', '1999-08-05',1);",
+//                "INSERT INTO player VALUES (1013,1215,5, 'Fahd', 'MF', '1997-07-27',16);",
+//                "INSERT INTO player VALUES (1010,1215,6, 'Mohammed', 'DF', '1992-11-20',22);",
+//                "INSERT INTO player VALUES (1004,1215,7, 'Ali', 'DF', '1995-10-11',31);",
+//                "INSERT INTO player VALUES (1012,1215,8, 'Raed', 'MF', '1997-01-05',2);",
+//                "INSERT INTO player VALUES (1017,1215,9, 'Mousa', 'MF', '1996-12-17',21);",
+//                "INSERT INTO player VALUES (1023,1216,1, 'Naeem', 'GK', '1991-05-27',1);",
+//                "INSERT INTO player VALUES (1022,1216,4, 'Yasir', 'FD', '1998-07-15',2);",
+//                "INSERT INTO player VALUES (1003,1217,2, 'Nasr', 'GK', '1997-09-25',3);",
+//                "INSERT INTO player VALUES (1015,1217,13, 'Ashraf', 'MF', '1994-01-16',4);",
+//                "INSERT INTO player VALUES (1019,1217,14, 'Hassan', 'MF', '1991-03-28',5);",
+//                "INSERT INTO player VALUES (1009,1217,15, 'Abdullah', 'DF', '1996-06-09',6);",
+//                "INSERT INTO player VALUES (1021,1217,16, 'Bassam', 'FD', '1999-07-27',7);",
 //
 //
 //                "INSERT INTO referee VALUES (7001,'Hassan');",

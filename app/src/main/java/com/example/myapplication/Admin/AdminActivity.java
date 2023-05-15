@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
         Button addTournament, addTeam , selectCaptain ,deleteTournament,ApprovePlayer,log_out;
-        ArrayList<String> PlayerID , TeamID,JerseyNumber,PlayerName,Position,Date;
+        ArrayList<String> PlayerID , TeamID,JerseyNumber,PlayerName,Position,Date , goals;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +61,7 @@ public class AdminActivity extends AppCompatActivity {
             PlayerName = new ArrayList<>();
             Position = new ArrayList<>();
             Date = new ArrayList<>();
+            goals = new ArrayList<>();
            Cursor cursor = myDB.add_player();
 
            if (cursor.getCount() == 0){
@@ -74,13 +75,15 @@ public class AdminActivity extends AppCompatActivity {
                    PlayerName.add(cursor.getString(3));
                    Position.add(cursor.getString(4));
                    Date.add(cursor.getString(5));
+                   goals.add(cursor.getString(6));
                    myDB.add_player(
                            Integer.parseInt(PlayerID.get(i)),
                            Integer.parseInt(TeamID.get(i)),
                            Integer.parseInt(JerseyNumber.get(i)),
                            PlayerName.get(i).trim(),
                            Position.get(i).trim(),
-                           Date.get(i).trim());
+                           Date.get(i).trim(),
+                           Integer.parseInt(goals.get(i)));
                    i++;
                }
            }

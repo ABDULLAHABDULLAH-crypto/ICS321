@@ -57,7 +57,7 @@ public class Allmembers extends AppCompatActivity {
                 editTextText2=findViewById(R.id.editTextText_allMember);
                 user= editTextText2.getText().toString().trim();
 
-                list=db.read_allMembers(user);
+                list=db.read_allMembers(editTextText2.getText().toString());
                 adapter=new ArrayAdapter<>(Allmembers.this,R.layout.item_allmembers ,R.id.item_allmember,list);
 
 
