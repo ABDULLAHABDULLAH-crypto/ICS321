@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.User.UserActivity;
 
 public class AdminActivity extends AppCompatActivity {
-        Button addTournament, addTeam , selectCaptain ,deleteTournament;
+        Button addTournament, addTeam , selectCaptain ,deleteTournament,Log_out;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,12 @@ public class AdminActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminActivity.this, DeleteActivity.class);
             startActivity(intent);
         });
+        Log_out=findViewById(R.id.Log_Out_Admin);
+        Log_out.setOnClickListener(v->{
+            Intent intent = new Intent(AdminActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
 
     }
 

@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.DataBaseHandler;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 public class UserActivity extends AppCompatActivity {
 
     DataBaseHandler db;
-    Button match_results,redCard,highestP, allMembers;
+    Button match_results,redCard,highestP, allMembers,Log_out;
     RecyclerView recyclerView;
 
     @Override
@@ -23,7 +24,6 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
 //        recyclerView = findViewById(R.id.recyclerView);
-//        redCard = findViewById(R.id.btnPlayerRedCard);
         db=new DataBaseHandler(this);
 
         highestP = findViewById(R.id.btnPlayerWithHighsetGoal);
@@ -50,5 +50,12 @@ public class UserActivity extends AppCompatActivity {
             startActivity(intent);
         }));
 
+//        Log out
+
+        Log_out=findViewById(R.id.Log_Out);
+        Log_out.setOnClickListener(v->{
+            Intent intent = new Intent(UserActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }
