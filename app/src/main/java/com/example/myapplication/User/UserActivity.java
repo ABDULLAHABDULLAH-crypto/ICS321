@@ -14,8 +14,7 @@ import com.example.myapplication.R;
 public class UserActivity extends AppCompatActivity {
 
     DataBaseHandler db;
-    Button match_results,redCard,highestP, allMembers;
-    RecyclerView recyclerView;
+    Button match_results,redCard,highestP, allMembers , addPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,10 @@ public class UserActivity extends AppCompatActivity {
             Intent intent = new Intent(UserActivity.this, com.example.myapplication.User.Allmembers.class);
             startActivity(intent);
         }));
-
+        addPlayer =findViewById(R.id.btnAddPlayer);
+        addPlayer.setOnClickListener(v ->{
+            Intent intent = new Intent(UserActivity.this,AddPlayerActivity.class);
+            startActivity(intent);
+        });
     }
 }

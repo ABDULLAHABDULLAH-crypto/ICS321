@@ -22,6 +22,14 @@ public class Utils {
     public static String dt_of_bir="dt_of_bir";
     public static String player_goal="player_goal";
 
+    /// Player_approve table variables
+    public static String Player_Table_approve="player_approve";
+
+
+
+
+
+
 // Card Table
     public static String cardTable ="Card";
     public static String redCard = "red_card";

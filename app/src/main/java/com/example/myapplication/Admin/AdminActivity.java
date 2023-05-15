@@ -3,14 +3,20 @@ package com.example.myapplication.Admin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.myapplication.DataBaseHandler;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
+
 public class AdminActivity extends AppCompatActivity {
-        Button addTournament, addTeam , selectCaptain ,deleteTournament;
+        Button addTournament, addTeam , selectCaptain ,deleteTournament,ApprovePlayer;
+        ArrayList<String> PlayerID , TeamID,JerseyNumber,PlayerName,Position,Date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +46,39 @@ public class AdminActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminActivity.this, DeleteActivity.class);
             startActivity(intent);
         });
+        ApprovePlayer = findViewById(R.id.ApprovePlayer);
+        ApprovePlayer.setOnClickListener((View)-> {
+            DataBaseHandler myDB = new DataBaseHandler(AdminActivity.this);
+            PlayerID = new ArrayList<>();
+            TeamID = new ArrayList<>();
+            JerseyNumber = new ArrayList<>();
+            PlayerName = new ArrayList<>();
+            Position = new ArrayList<>();
+            Date = new ArrayList<>();
+           Cursor cursor = myDB.add_player();
+
+           if (cursor.getCount() == 0){
+               Toast.makeText(View.getContext(), "No Player to approve", Toast.LENGTH_SHORT).show();
+           }else {
+               int i =0;
+               while (cursor.moveToNext()){
+                   PlayerID.add(cursor.getString(0));
+                   TeamID.add(cursor.getString(1));
+                   JerseyNumber.add(cursor.getString(2));
+                   PlayerName.add(cursor.getString(3));
+                   Position.add(cursor.getString(4));
+                   Date.add(cursor.getString(5));
+                   myDB.add_player(
+                           Integer.parseInt(PlayerID.get(i)),
+                           Integer.parseInt(TeamID.get(i)),
+                           Integer.parseInt(JerseyNumber.get(i)),
+                           PlayerName.get(i).trim(),
+                           Position.get(i).trim(),
+                           Date.get(i).trim());
+                   i++;
+               }
+           }
+        });
 
     }
-
-
 }

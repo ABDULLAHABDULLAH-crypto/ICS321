@@ -10,33 +10,30 @@
         android:id="@+id/Team_members"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="8dp"
         android:text="Team members"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlayerRedCard" />
+        app:layout_constraintTop_toBottomOf="@+id/match_results" />
 
     <Button
         android:id="@+id/match_results"
         android:layout_width="302dp"
         android:layout_height="54dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:text="Match Results"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlayerRedCard"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPlayerWithHighsetGoal" />
 
     <Button
         android:id="@+id/btnPlayerRedCard"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Player with red card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -44,38 +41,38 @@
         android:id="@+id/btnPlayerWithHighsetGoal"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Player with the highest goal scored"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPlayerRedCard" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="405dp"
-        android:layout_height="469dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="484dp" />
+        app:layout_constraintGuide_begin="225dp" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="109dp"
-        android:layout_height="51dp"
+        android:layout_width="340dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="100dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnPlayerRedCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddPlayer"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Add player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Team_members" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

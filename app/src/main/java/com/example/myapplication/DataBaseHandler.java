@@ -86,15 +86,26 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         db.execSQL(query_team);
 //        // Player query
 //        /*##############################################################*/
-            String query_Player = "CREATE TABLE " + Utils.Player_Table +
+            String query_Player = "CREATE TABLE " + Utils.Player_Table_approve +
                     " (" + Utils.Player_id + " INTEGER NOT NULL," +
                     Utils.team_id_Player+ " INTEGER NOT NULL," +
                     Utils.jersey_no+ " INTEGER NOT NULL," +
                     Utils.player_name+" VARCHAR"+"(40)"+ "NOT NULL," +
-                    Utils.position_to_play+"CHAR NOT NULL," +
-                    Utils.dt_of_bir+"DATE,"+
+                    Utils.position_to_play+" CHAR NOT NULL," +
+                    Utils.dt_of_bir +" DATE,"+
                     " PRIMARY KEY (" + Utils.Player_id + "," + Utils.team_id_Player + "));";
                     db.execSQL(query_Player);
+
+
+        String query_Player_Approve = "CREATE TABLE " + Utils.Player_Table +
+                " (" + Utils.Player_id + " INTEGER NOT NULL," +
+                Utils.team_id_Player+ " INTEGER NOT NULL," +
+                Utils.jersey_no+ " INTEGER NOT NULL," +
+                Utils.player_name+" VARCHAR"+"(40)"+ "NOT NULL," +
+                Utils.position_to_play+" CHAR NOT NULL," +
+                Utils.dt_of_bir+" DATE,"+
+                " PRIMARY KEY (" + Utils.Player_id + "," + Utils.team_id_Player + "));";
+        db.execSQL(query_Player_Approve);
 
 
 
@@ -318,7 +329,7 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         cv.put(Utils.Player_id , player_id);
         cv.put(Utils.team_id_Player, teamID);
         cv.put(Utils.jersey_no , jersey_no);
-        cv.put(Utils.results, player_name);
+        cv.put(Utils.player_name, player_name);
         cv.put(Utils.position_to_play, position_to_play);
         cv.put(Utils.dt_of_bir, dt_of_bir);
 
@@ -327,6 +338,35 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed to insert add_player", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public  Cursor add_player (){
+        String player = "SELECT * FROM  player_approve";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor=null;
+        if(db!=null){
+            cursor=db.rawQuery(player,null);
+        }
+        return cursor;
+    }
+
+    public void add_player_approve (int player_id , int teamID , int jersey_no , String player_name ,
+                            String position_to_play , String dt_of_bir ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Utils.Player_id , player_id);
+        cv.put(Utils.team_id_Player, teamID);
+        cv.put(Utils.jersey_no , jersey_no);
+        cv.put(Utils.player_name, player_name);
+        cv.put(Utils.position_to_play, position_to_play);
+        cv.put(Utils.dt_of_bir, dt_of_bir);
+
+        long result =  db.insert(Utils.Player_Table_approve, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed to insert add_player", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Waiting for approval form admin", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -350,32 +390,6 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
         long result =  db.insert(TABLE_NAME_Team, null, cv);
         if (result == -1){
             Toast.makeText(context, "Failed to insert Team", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    public void add_played_match(int match_no , String play_stage , String play_date , String results ,
-                          String decided_by , String goal_score , int venue_id ,int referee_id, int audience , int player_of_match , int stop1_sec , int stop2_sec){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(Utils.main_match_no , match_no);
-        cv.put(Utils.play_stage, play_stage);
-        cv.put(Utils.play_date , play_date);
-        cv.put(Utils.results, results);
-        cv.put(Utils.decided_by , decided_by);
-        cv.put(Utils.goal_score, goal_score);
-        cv.put(Utils.venue_id , venue_id);
-        cv.put(Utils.match_referee_id, referee_id);
-        cv.put(Utils.audience , audience);
-        cv.put(Utils.player_of_match, player_of_match);
-        cv.put(Utils.stop1_sec , stop1_sec);
-        cv.put(Utils.stop2_sec, stop2_sec);
-
-        long result =  db.insert(Utils.match_played_table, null, cv);
-        if (result == -1){
-            Toast.makeText(context, "Failed to insert add_played_match", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
         }
@@ -411,7 +425,6 @@ public class DataBaseHandler  extends SQLiteOpenHelper {
 //                "INSERT INTO tournament VALUES (3, 'Student Tournament', '2022-12-10', '2022-12-02');",
 //                "INSERT INTO tournament VALUES (4, 'Staff Tournament', '2023-02-15', '2023-02-25');",
 //                "INSERT INTO tournament VALUES (5, 'Annual Tournament', '2023-01-01', '2023-01-15');",
-//
 //
 //                "INSERT INTO team VALUES (1214,1,'A',3,0,3,0,4,4,0,3,1);",
 //                "INSERT INTO team VALUES (1215,1,'B',3,1,1,1,3,4,-1,4,2);",

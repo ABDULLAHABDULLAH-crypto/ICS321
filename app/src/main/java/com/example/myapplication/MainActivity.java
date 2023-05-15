@@ -20,8 +20,6 @@ import com.example.myapplication.User.UserActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-    RecyclerView recyclerView ;
     Button redCard ,highestP,logIn;
     RadioButton userRadioButton,adminRadioButton;
     DataBaseHandler db;
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         db=new DataBaseHandler(this);
         db.insertData();
 
-        recyclerView = findViewById(R.id.recyclerView);
+
         redCard = findViewById(R.id.btnPlayerRedCard);
         highestP = findViewById(R.id.btnPlayerWithHighsetGoal);
 
