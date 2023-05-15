@@ -13,45 +13,57 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    public CustomAdapter(Context context, ArrayList<String> matches, ArrayList<String> results) {
-        this.context = context;
-        this.matches = matches;
-        this.result = results;
-    }
+
 
     private Context context;
-        private ArrayList<String> matches,result;
+    private ArrayList<String> player_ID, team_ID, red_card;
+
+
+    public CustomAdapter(Context context,
+                  ArrayList player_ID,
+                  ArrayList team_ID,
+                  ArrayList red_card){
+        this.context = context;
+        this.player_ID = player_ID;
+        this.red_card = red_card;
+        this.team_ID = team_ID;
+    }
+
+
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater= LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.match_result,parent,false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.browse_redcard, parent, false);
         return new MyViewHolder(view);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            holder.match.setText(String.valueOf(matches.get(position)));
-             holder.result.setText(String.valueOf(result.get(position)));
+        holder.player_id.setText(String.valueOf(player_ID.get(position)));
+        holder.team_id.setText(String.valueOf(team_ID.get(position)));
+        holder.redCard.setText(String.valueOf(red_card.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return result.size();
+        return player_ID.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView match,result;
+        TextView player_id, team_id, redCard;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-//            match=itemView.findViewById(R.id.match_id);
-//            result=itemView.findViewById(R.id.result_id);
+//            player_id = itemView.findViewById(R.id.item_redcard_player_id);
+//            team_id = itemView.findViewById(R.id.item_redcard_team_id);
+//            redCard = itemView.findViewById(R.id.item_redcard_redcard);
+
         }
     }
 }

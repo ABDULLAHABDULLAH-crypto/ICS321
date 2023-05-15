@@ -14,7 +14,7 @@ import com.example.myapplication.R;
 public class UserActivity extends AppCompatActivity {
 
     DataBaseHandler db;
-    Button match_results,redCard,highestP;
+    Button match_results,redCard,highestP, allMembers;
     RecyclerView recyclerView;
 
     @Override
@@ -35,6 +35,18 @@ public class UserActivity extends AppCompatActivity {
         match_results=findViewById(R.id.match_results);
         match_results.setOnClickListener((v -> {
             Intent intent = new Intent(UserActivity.this, com.example.myapplication.User.match_results.class);
+            startActivity(intent);
+        }));
+
+        redCard=findViewById(R.id.btnPlayerRedCard);
+        redCard.setOnClickListener((v -> {
+            Intent intent = new Intent(UserActivity.this, com.example.myapplication.User.red_card.class);
+            startActivity(intent);
+        }));
+
+        allMembers=findViewById(R.id.Team_members);
+        allMembers.setOnClickListener((v -> {
+            Intent intent = new Intent(UserActivity.this, com.example.myapplication.User.Allmembers.class);
             startActivity(intent);
         }));
 

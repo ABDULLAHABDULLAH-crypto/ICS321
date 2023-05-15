@@ -5,14 +5,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.myapplication.Admin.AdminActivity;
+
 import com.example.myapplication.User.UserActivity;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     Button redCard ,highestP,logIn;
     RadioButton userRadioButton,adminRadioButton;
     DataBaseHandler db;
+
+    ListView list;
+
+
+    ArrayList<String> playedID, teamID, redcard;
+    ArrayList<String> combined_redcard;
 
 
     @SuppressLint("MissingInflatedId")
@@ -29,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         db=new DataBaseHandler(this);
-//        db.insertData();
+        db.insertData();
 
         recyclerView = findViewById(R.id.recyclerView);
         redCard = findViewById(R.id.btnPlayerRedCard);
@@ -52,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }
