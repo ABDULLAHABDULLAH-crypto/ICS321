@@ -10,12 +10,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.DataBaseHandler;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
-        Button addTournament, addTeam , selectCaptain ,deleteTournament,ApprovePlayer;
+        Button addTournament, addTeam , selectCaptain ,deleteTournament,ApprovePlayer,log_out;
         ArrayList<String> PlayerID , TeamID,JerseyNumber,PlayerName,Position,Date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,11 @@ public class AdminActivity extends AppCompatActivity {
         selectCaptain = findViewById(R.id.TeamCaption);
         selectCaptain.setOnClickListener((View) -> {
             Intent intent = new Intent(AdminActivity.this, CaptainActivity.class);
+            startActivity(intent);
+        });
+        log_out = findViewById(R.id.Log_Out_Admin);
+        log_out.setOnClickListener((View) -> {
+            Intent intent = new Intent(AdminActivity.this, MainActivity.class);
             startActivity(intent);
         });
 

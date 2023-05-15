@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.DataBaseHandler;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 public class UserActivity extends AppCompatActivity {
 
     DataBaseHandler db;
-    Button match_results,redCard,highestP, allMembers , addPlayer;
+    Button match_results,redCard,highestP, allMembers , addPlayer,Log_out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +54,12 @@ public class UserActivity extends AppCompatActivity {
             Intent intent = new Intent(UserActivity.this,AddPlayerActivity.class);
             startActivity(intent);
         });
+        Log_out =findViewById(R.id.Log_out_user);
+        Log_out.setOnClickListener(v ->{
+            Intent intent = new Intent(UserActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
+
+
 }
